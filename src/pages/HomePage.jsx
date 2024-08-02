@@ -15,14 +15,7 @@ import Coat10 from '../../public/images/sweater10.png'
 import Coat11 from '../../public/images/sweater11.png'
 import Coat12 from '../../public/images/sweater12.png'
 import Shelf from '../../public/images/shelf.png'
-
-
-
-
-
-import {useDroppable} from '@dnd-kit/core';
-import {useDraggable} from '@dnd-kit/core';
-import {CSS} from '@dnd-kit/utilities';
+import Info from '../../public/images/infoIcon.png'
 
 
 
@@ -44,27 +37,10 @@ export default function HomePage() {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    const [counters, setCounters] = useState([0,0,0,0])
+    const [foundationName, setFoundationName] = useState(["SZENT ISTVÁN KIRÁLY ZENEI ALAPÍTVÁNY","AUTIZMUS ALAPÍTVÁNY","ÉLELMISZERBANK EGYESÜLET","LÁMPÁS '92 ALAPÍTVÁNY"])
+    const [links, setLinks] = useState(["www.szentistvanzene.hu","www.autizmus.hu","www.elemiszerbank.hu","www.lampas92.hu"]);
 
-    const {setNodeRef: setFirstDroppableRef} = useDroppable({
-        id: 'droppable-1',
-      });
-      const {setNodeRef: setSecondDroppableRef} = useDroppable({
-        id: 'droppable-2',
-      });
-      const {setNodeRef: setThirdDroppableRef} = useDroppable({
-        id: 'droppable-3',
-      });
-      const {setNodeRef: setFourthDroppableRef} = useDroppable({
-        id: 'droppable-4',
-      });
-
-
-      const {attributes, listeners, setNodeRef, transform} = useDraggable({
-        id: 'unique-id',
-      });
-      const style = {
-        transform: CSS.Translate.toString(transform),
-      }; 
 
 
   return (
@@ -113,25 +89,53 @@ export default function HomePage() {
         </div>
         <div className="shelfContainer">
             <div className="shelf">
-                <div ref={setFirstDroppableRef} className='DroppPlace'>
+                <div  className='DroppPlace'>
                 </div>
                 <img src={Shelf} alt="" className='ShelfImg'/>
+                <div className="counter">{counters[0]}</div>
+                <div className="foundationName">{foundationName[0]}</div>
+                <div className="buttons">
+                    <img src={Info} alt="" className='infoBtn'/>
+                    <div className="link">{links[0]}</div>
+                </div>
             </div>
             <div className="shelf">
-                <div ref={setSecondDroppableRef} className='DroppPlace'>
+                <div  className='DroppPlace'>
                 </div>
                 <img src={Shelf} alt="" className='ShelfImg'/>
+                <div className="counter">{counters[1]}</div>
+                <div className="foundationName">{foundationName[1]}</div>
+                <div className="buttons">
+                    <img src={Info} alt="" className='infoBtn'/>
+                    <div className="link">{links[1]}</div>
+                </div>
             </div>
             <div className="shelf">
-                <div ref={setThirdDroppableRef} className='DroppPlace'>
+                <div  className='DroppPlace'>
                 </div>
                 <img src={Shelf} alt="" className='ShelfImg'/>
+                <div className="counter">{counters[2]}</div>
+                <div className="foundationName">{foundationName[2]}</div>
+                <div className="buttons">
+                    <img src={Info} alt="" className='infoBtn'/>
+                    <div className="link">{links[2]}</div>
+                </div>
             </div>
             <div className="shelf">
-                <div ref={setFourthDroppableRef} className='DroppPlace'>
+                <div  className='DroppPlace'>
                 </div>
                 <img src={Shelf} alt="" className='ShelfImg'/>
+                <div className="counter">{counters[3]}</div>
+                <div className="foundationName">{foundationName[3]}</div>
+                <div className="buttons">
+                    <img src={Info} alt="" className='infoBtn'/>
+                    <div className="link">{links[3]}</div>
+                </div>
             </div>
+
+        </div>
+        <div className="resetBtn">
+            VISSZAÁLLÍTÁS
         </div>
     </div>
   )

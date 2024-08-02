@@ -1,13 +1,18 @@
 @use './style.scss';
-
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 .homeContainer{
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     width: 100%;
     max-width: 1400px;
     height: 100%;
     min-height: 100vh;
     background-color: style.$base-color;
     overflow: hidden;
+    font-family: "Roboto", sans-serif;
 }
 
 .headerImage{
@@ -66,7 +71,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    height: 600px;
+    // height: 600px;
 }
 .shelf{
     width: 350px;
@@ -79,7 +84,80 @@
     width: 80%;
     height: 160px;
     background-color: green;
+    margin-bottom: -7px;
 }
 .ShelfImg{
     width: 100%;
+}
+.counter{
+    width: 100%;
+    font-size: 10em;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    margin-top: -50px;
+}
+.foundationName{
+    width: 100%;
+    font-size: 2em;
+    color: #125788;
+    text-align: center;
+    font-weight: 700;
+}
+
+.buttons{
+    position: relative;
+    width: 90%;
+    margin-top: 20px;
+}
+    
+.infoBtn{
+    position: absolute;
+    left: -5px;
+    top: -5px;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.infoBtn:hover{
+    transform: scale(1.1);
+}
+
+
+.link{
+    background-color: #0A304B;
+    font-size: 1.2em;
+    height: 30px;
+    width: 100%;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    border: 1px solid white;
+    transition: 0.5s;
+}
+.link:hover{
+    border: 1px solid #0A304B;
+    
+}
+.resetBtn{
+    background: #E73834;
+    border-radius: 20px;
+    border: 1px solid #ffffff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #ffffff;
+    font-size: 1.5em;
+    text-align: center;
+    width: 300px;
+    cursor: pointer;
+    transition: 0.5s;
+    margin-bottom: 30px;
+    margin-top: 80px;
+    row-gap: 50px;
+}
+.resetBtn:hover{
+    border: 1px solid #E73834;
 }
