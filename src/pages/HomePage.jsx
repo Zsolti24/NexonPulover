@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import HeaderImgL from '../../public/images/headerImage2022.png'
 import HeaderImgM from '../../public/images/headerImage2022_small.png'
 import CoatHangerImg from '../../public/images/coathanger.png'
@@ -14,6 +14,17 @@ import Coat9 from '../../public/images/sweater9.png'
 import Coat10 from '../../public/images/sweater10.png'
 import Coat11 from '../../public/images/sweater11.png'
 import Coat12 from '../../public/images/sweater12.png'
+import Shelf from '../../public/images/shelf.png'
+
+
+
+
+
+import {useDroppable} from '@dnd-kit/core';
+import {useDraggable} from '@dnd-kit/core';
+import {CSS} from '@dnd-kit/utilities';
+
+
 
 export default function HomePage() {
 
@@ -25,14 +36,35 @@ export default function HomePage() {
         if (width <= 1024) {
             setHeaderImgSrc(HeaderImgM);
         } else {
-            setHeaderImgSrc(HeaderImgL);
+            setHeaderImgSrc(HeaderImgL);    
         }
         };
         handleResize();
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
-    
+
+
+    const {setNodeRef: setFirstDroppableRef} = useDroppable({
+        id: 'droppable-1',
+      });
+      const {setNodeRef: setSecondDroppableRef} = useDroppable({
+        id: 'droppable-2',
+      });
+      const {setNodeRef: setThirdDroppableRef} = useDroppable({
+        id: 'droppable-3',
+      });
+      const {setNodeRef: setFourthDroppableRef} = useDroppable({
+        id: 'droppable-4',
+      });
+
+
+      const {attributes, listeners, setNodeRef, transform} = useDraggable({
+        id: 'unique-id',
+      });
+      const style = {
+        transform: CSS.Translate.toString(transform),
+      }; 
 
 
   return (
@@ -77,6 +109,28 @@ export default function HomePage() {
                 <div className="coat">
                     <img src={Coat12} alt="" className='coatImg'/>
                 </div>
+            </div>
+        </div>
+        <div className="shelfContainer">
+            <div className="shelf">
+                <div ref={setFirstDroppableRef} className='DroppPlace'>
+                </div>
+                <img src={Shelf} alt="" className='ShelfImg'/>
+            </div>
+            <div className="shelf">
+                <div ref={setSecondDroppableRef} className='DroppPlace'>
+                </div>
+                <img src={Shelf} alt="" className='ShelfImg'/>
+            </div>
+            <div className="shelf">
+                <div ref={setThirdDroppableRef} className='DroppPlace'>
+                </div>
+                <img src={Shelf} alt="" className='ShelfImg'/>
+            </div>
+            <div className="shelf">
+                <div ref={setFourthDroppableRef} className='DroppPlace'>
+                </div>
+                <img src={Shelf} alt="" className='ShelfImg'/>
             </div>
         </div>
     </div>
