@@ -10,8 +10,10 @@ function DraggableComponent({ id, src, alt }) {
   // Csak a translate értéket használjuk a transform-ban
   const style = {
     touchAction: 'none',
-    width: '100%', 
-    
+    width: '130px', 
+    display:'flex',
+    marginBottom:'-2px',
+    marginTop:'-4px',
     opacity: isDragging ? 1 : 1, 
     zIndex: isDragging ? 1000 : 'auto',
     cursor: isDragging ? 'grab' : 'pointer', // Cursor változtatása
@@ -20,8 +22,8 @@ function DraggableComponent({ id, src, alt }) {
   };
 
   return (
-    <div ref={setNodeRef} style={style} {...listeners} {...attributes} className="draggable">
-      <img src={src} alt={alt} style={{ width: '100%'}} />
+    <div ref={setNodeRef} style={style} {...listeners} {...attributes} >
+      <img src={src} alt={alt} className='coatImg'/>
     </div>
   );
 }

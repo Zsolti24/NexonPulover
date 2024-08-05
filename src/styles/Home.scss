@@ -29,29 +29,35 @@
 .coatFlexContainer{
     position: absolute;
     display: flex;
-    
-    width: 1200px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: 200px;
     left: 100px;
     top: 35%;
-    // border: 1px solid green;
+    border: 1px solid green;
 }
 .coat{
-    // border: 1px solid red;
-    width: 200px;
+    width: 80px;
+    // scale: 0.4;
 }
 // .coat:nth-child(1){
-//     margin-left: -40px;
-//     margin-top: -5px;
-// }.coat:nth-child(2){
-//     margin-left: -114px;
-//     margin-top: -5px;
-// }.coat:nth-child(3){
-//     margin-left: -90px;
-//     margin-top: -4px;
+//     margin-left: 32px;
+//     margin-top: -115px;
 // }
-
-.coatImg{
+// .coat:nth-child(2){
+//         margin-left: -110px;
+//         margin-top: -150px;
+// }
+// .coat:nth-child(3){
+    //     margin-left: -90px;
+    //     margin-top: -4px;
+    // }
+    
+    
+    .coatImg{
     width: 100%;
+    // scale: 0.4;
     object-fit: cover;
 }
 
@@ -69,12 +75,27 @@
     flex-direction: column;
 }
 .DroppPlace{
-    width: 70%;
+    width: 261px;
     height: 160px;
     // background-color: green;
     margin-bottom: -7px;
-    // display: flex;   
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    // flex-flow: column;
+    align-items: flex-end;
     
+}
+.lenti{
+    width: 600px;
+    height: 60px;
+    background-color: green;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: flex-end;
+    flex-flow: column;
 }
 .ShelfImg{
     width: 100%;
@@ -151,14 +172,8 @@
 .resetBtn:hover{
     border: 1px solid #E73834;
 }
-  .draggable {
-    width: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
-  
   .draggable img {
     // height: 100px;
   }
+
+

@@ -7,19 +7,14 @@ function DroppableComponent({ id, children, disabled }) {
     disabled, // Apply the disabled prop here
   });
 
-  const style = {
+  const styleD = {
+    width:'200px',
+    height:'400px',
     // backgroundColor: isOver ? 'lightgreen' : 'lightgrey',
-    // padding: '20px',
-    // margin: '10px',
-    minHeight: '100px',
-    display: 'flex',
-    flexDirection: 'column-reverse',
-    alignItems: 'center',
-    justifyContent: 'bottom',
   };
 
   return (
-    <div ref={setNodeRef} style={style} >
+    <div ref={setNodeRef} style={styleD} >
       {children}
     </div>
   );

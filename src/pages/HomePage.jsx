@@ -8,6 +8,8 @@ import Info from '../../public/images/infoIcon.png'
 import { DndContext } from '@dnd-kit/core';
 import DraggableComponent from '../components/DraggableComponent';
 import DroppableComponent from '../components/DroppableComponent';
+import DroppableComponentForStack from '../components/DroppableComponentForStack';
+import { findRenderedComponentWithType } from 'react-dom/test-utils'
 
 
 export default function HomePage() {
@@ -95,8 +97,27 @@ export default function HomePage() {
       const droppableIds = Array.from({ length: 12 }, (_, index) => `droppable${index + 5}`);
 
 
-
-
+      const resetDroppedItems = () => {
+        setDroppedItems({
+          droppable1: [],
+          droppable2: [],
+          droppable3: [],
+          droppable4: [],
+          droppable5: ['draggable-1'],
+          droppable6: ['draggable-2'],
+          droppable7: ['draggable-3'],
+          droppable8: ['draggable-4'],
+          droppable9: ['draggable-5'],
+          droppable10: ['draggable-6'],
+          droppable11: ['draggable-7'],
+          droppable12: ['draggable-8'],
+          droppable13: ['draggable-9'],
+          droppable14: ['draggable-10'],
+          droppable15: ['draggable-11'],
+          droppable16: ['draggable-12'],
+        });
+        setCounters([0,0,0,0]);
+      };
 
 
   return (
@@ -129,7 +150,7 @@ export default function HomePage() {
             {foundationName.map((name, index) => (
                     <div className="shelf" key={index}>
                     <div className='DroppPlace'>
-                        <DroppableComponent id={`droppable${index + 1}`}>
+                        <DroppableComponentForStack id={`droppable${index + 1}`}>
                         <div className="dropPlace">
                             {droppedItems[`droppable${index + 1}`].map((id) => (
                             <DraggableComponent 
@@ -140,7 +161,7 @@ export default function HomePage() {
                             />
                             ))}
                         </div>
-                        </DroppableComponent>
+                        </DroppableComponentForStack>
                     </div>
                     <img src={Shelf} alt="" className='ShelfImg' />
                     <div className="counter">{counters[index]}</div>
@@ -154,7 +175,7 @@ export default function HomePage() {
 
 
         </div>
-        <div className="resetBtn">
+        <div className="resetBtn" onClick={resetDroppedItems}>
             VISSZAÁLLÍTÁS
         </div>
     </div>
