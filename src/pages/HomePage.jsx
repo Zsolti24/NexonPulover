@@ -122,6 +122,28 @@ export default function HomePage() {
       };
 
 
+      const [submitBtn, setSubmitBtn] = useState('SubmitBtn');
+
+      useEffect(() => {
+        const emptyDroppables = [
+          droppedItems.droppable5,
+          droppedItems.droppable6,
+          droppedItems.droppable7,
+          droppedItems.droppable8,
+          droppedItems.droppable9,
+          droppedItems.droppable10,
+          droppedItems.droppable11,
+          droppedItems.droppable12,
+          droppedItems.droppable13,
+          droppedItems.droppable14,
+          droppedItems.droppable15,
+          droppedItems.droppable16,
+        ];
+    
+        const allEmpty = emptyDroppables.every(item => item.length === 0);
+        setSubmitBtn(allEmpty ? 'SubmitBtn SubmitBtnActive' : 'SubmitBtn');
+      }, [droppedItems]); 
+
   return (
     <DndContext onDragEnd={handleDragEnd}>
 
@@ -129,6 +151,7 @@ export default function HomePage() {
         <img src={headerImgSrc} alt="headerImage" className='headerImage'/>
         <div className="coatHangerConatiner">
             <img src={CoatHangerImg} alt="" className='coatHangerImg'/>
+            <div className={submitBtn}>ELKÜLDÖM</div>
 
             <div className="coatFlexContainer">
             {droppableIds.map((id) => (

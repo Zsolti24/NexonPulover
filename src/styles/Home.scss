@@ -39,7 +39,6 @@
 }
 .coat{
     width: 80px;
-    // scale: 0.4;
 }
 // .coat:nth-child(1){
 //     margin-left: 32px;
@@ -84,10 +83,6 @@
     align-items: flex-end;
 }
 .dropPlace{
-    // height: 60px;
-    // position: relative;
-    // display: flex;
-    // flex-wrap: wrap;
     align-items: flex-end;
     
 }
@@ -178,8 +173,27 @@
 .resetBtn:hover{
     border: 1px solid #E73834;
 }
-  .draggable img {
-    // height: 100px;
-  }
 
-
+.SubmitBtn{
+    position: absolute;
+    top: 220px;
+    padding: 10px 30px;
+    left: 50%;
+    font-size: 3em;
+    color: #FFFFFF;
+    border-radius: 40px;
+    border: 2px solid #FFFFFF;
+    background-color: #0A304B;
+    box-shadow: 0 10px 4px -4px #0A304B;
+    transform: translateX(-50%);
+    cursor: pointer;
+    z-index: 1000;
+    transition: 0.5s;
+    display: none;
+}
+.SubmitBtnActive{
+    display: flex;
+}
+.SubmitBtn:hover{
+    border: 2px solid #0A304B;
+}
