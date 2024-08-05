@@ -13,7 +13,7 @@ function DroppableComponent({ id, children, disabled }) {
     // margin: '10px',
     minHeight: '100px',
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'column-reverse',
     alignItems: 'center',
     justifyContent: 'bottom',
   };

@@ -21,7 +21,7 @@
 }
 .coatHangerConatiner{
     position: relative;
-    width: 100%;
+    width: 1400px;
 }
 .coatHangerImg{
     width: 100%;
@@ -29,21 +29,26 @@
 .coatFlexContainer{
     position: absolute;
     display: flex;
-    width: 84%;
-    left: 8%;
-    top: 35%;
-    border: 1px solid red;
-}
-.coatImgContainer{
-    border: 1px solid blue;
-    // width: 100px;
-    // height: 100px;
     
+    width: 1200px;
+    left: 100px;
+    top: 35%;
+    // border: 1px solid green;
 }
 .coat{
-    border: 1px solid red;
-    width: 100px;
+    // border: 1px solid red;
+    width: 200px;
 }
+// .coat:nth-child(1){
+//     margin-left: -40px;
+//     margin-top: -5px;
+// }.coat:nth-child(2){
+//     margin-left: -114px;
+//     margin-top: -5px;
+// }.coat:nth-child(3){
+//     margin-left: -90px;
+//     margin-top: -4px;
+// }
 
 .coatImg{
     width: 100%;
@@ -146,20 +151,8 @@
 .resetBtn:hover{
     border: 1px solid #E73834;
 }
-
-
-
-
-
-
-
-.dropPlace{
-    // width: 500px;    
-    /* height: 100px; */
-  }
-  
   .draggable {
-    width: 100%;
+    width: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -167,15 +160,5 @@
   }
   
   .draggable img {
-    width: 100%;
-    // cursor: grab;
+    // height: 100px;
   }
-  
-  .droppable {
-    min-height: 120px;
-  }
-  
-  .droppable:hover {
-    background-color: #f0f0f0; /* Színváltozás hoverkor */
-  }
-  

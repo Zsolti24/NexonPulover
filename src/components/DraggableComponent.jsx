@@ -11,9 +11,11 @@ function DraggableComponent({ id, src, alt }) {
   const style = {
     touchAction: 'none',
     width: '100%', 
+    
     opacity: isDragging ? 1 : 1, 
     zIndex: isDragging ? 1000 : 'auto',
-    cursor: isDragging ? 'grab' : 'pointer',
+    cursor: isDragging ? 'grab' : 'pointer', // Cursor változtatása
+
     transform: isDragging ? `translate(${transform.x}px, ${transform.y}px)` : 'none', // Csak a pozíció
   };
 

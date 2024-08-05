@@ -41,6 +41,15 @@ export default function HomePage() {
         droppable5: ['draggable-1'],
         droppable6: ['draggable-2'],
         droppable7: ['draggable-3'],
+        droppable8: ['draggable-4'],
+        droppable9: ['draggable-5'],
+        droppable10: ['draggable-6'],
+        droppable11: ['draggable-7'],
+        droppable12: ['draggable-8'],
+        droppable13: ['draggable-9'],
+        droppable14: ['draggable-10'],
+        droppable15: ['draggable-11'],
+        droppable16: ['draggable-12'],
       });
     
       const [draggableItems] = useState([
@@ -48,6 +57,13 @@ export default function HomePage() {
         { id: 'draggable-2', alt: 'Image 2' },
         { id: 'draggable-3', alt: 'Image 3' },
         { id: 'draggable-4', alt: 'Image 4' },
+        { id: 'draggable-5', alt: 'Image 5' },
+        { id: 'draggable-6', alt: 'Image 6' },
+        { id: 'draggable-7', alt: 'Image 7' },
+        { id: 'draggable-8', alt: 'Image 8' },
+        { id: 'draggable-9', alt: 'Image 9' },
+        { id: 'draggable-10', alt: 'Image 10' },
+        { id: 'draggable-11', alt: 'Image 11' },
       ]);
 
       const handleDragEnd = (event) => {
@@ -57,12 +73,10 @@ export default function HomePage() {
           setDroppedItems((prev) => {
             const updated = { ...prev };
     
-            // Remove item from its original droppable
             Object.keys(updated).forEach((key) => {
               updated[key] = updated[key].filter((item) => item !== active.id);
             });
     
-            // Add item to the new droppable if conditions are met
             if (over.id === 'droppable1' || over.id === 'droppable2' || over.id === 'droppable3' || over.id === 'droppable4') {
               updated[over.id].push(active.id);
             } else if (updated[over.id].length === 0) {
@@ -78,6 +92,9 @@ export default function HomePage() {
       };
     
 
+      const droppableIds = Array.from({ length: 12 }, (_, index) => `droppable${index + 5}`);
+
+
 
 
 
@@ -89,31 +106,24 @@ export default function HomePage() {
         <img src={headerImgSrc} alt="headerImage" className='headerImage'/>
         <div className="coatHangerConatiner">
             <img src={CoatHangerImg} alt="" className='coatHangerImg'/>
+
             <div className="coatFlexContainer">
-                <div className="coat">
-                    <DroppableComponent id="droppable5" disabled={droppedItems.droppable5.length > 0}>
-                
-                        {droppedItems.droppable5.map((id) => (
-                            <DraggableComponent key={id} id={id} src={`../public/images/Image${id.split('-')[1]}.png`} alt={`Image ${id.split('-')[1]}`} />
-                        ))}
-                    </DroppableComponent>
-                </div> 
-                <div className="coat">
-                    <DroppableComponent id="droppable6" disabled={droppedItems.droppable6.length > 0}>
-                
-                        {droppedItems.droppable6.map((id) => (
-                            <DraggableComponent key={id} id={id} src={`../public/images/Image${id.split('-')[1]}.png`} alt={`Image ${id.split('-')[1]}`} />
-                        ))}
-                    </DroppableComponent>
-                </div> 
-                <div className="coat">
-                    <DroppableComponent id="droppable7" disabled={droppedItems.droppable7.length > 0}>
-                        {droppedItems.droppable7.map((id) => (
-                            <DraggableComponent key={id} id={id} src={`../public/images/Image${id.split('-')[1]}.png`} alt={`Image ${id.split('-')[1]}`} />
-                        ))}
-                    </DroppableComponent>
-                </div> 
+            {droppableIds.map((id) => (
+                <div className="coat" key={id}>
+                <DroppableComponent id={id} disabled={droppedItems[id].length > 0}>
+                    {droppedItems[id].map((itemId) => (
+                    <DraggableComponent 
+                        key={itemId} 
+                        id={itemId} 
+                        src={`../public/images/Image${itemId.split('-')[1]}.png`} 
+                        alt={`Image ${itemId.split('-')[1]}`} 
+                    />
+                    ))}
+                </DroppableComponent>
+                </div>
+            ))}
             </div>
+
         </div>
         <div className="shelfContainer">
             {foundationName.map((name, index) => (
