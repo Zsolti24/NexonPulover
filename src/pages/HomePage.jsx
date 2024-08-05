@@ -11,6 +11,8 @@ import DroppableComponent from '../components/DroppableComponent';
 import DroppableComponentForStack from '../components/DroppableComponentForStack';
 import { findRenderedComponentWithType } from 'react-dom/test-utils'
 
+// LINK FOR THE SCRIPT https://script.google.com/macros/s/AKfycbwo_wPjNaIIvXR60FgBIudGWYvUmYhEgyfsocdxzAevbKlajZvzdw8_bHZ_i2hA8OuZ/exec
+
 
 export default function HomePage() {
 

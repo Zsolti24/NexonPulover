@@ -77,23 +77,29 @@
 .DroppPlace{
     width: 261px;
     height: 160px;
-    // background-color: green;
     margin-bottom: -7px;
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    // flex-flow: column;
+    align-items: flex-end;
+}
+.dropPlace{
+    // height: 60px;
+    // position: relative;
+    // display: flex;
+    // flex-wrap: wrap;
     align-items: flex-end;
     
 }
 .lenti{
     width: 600px;
+    max-height: 60px;
     height: 60px;
     background-color: green;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-content: flex-start;
+    align-content: flex-end;
     justify-content: flex-end;
     flex-flow: column;
 }

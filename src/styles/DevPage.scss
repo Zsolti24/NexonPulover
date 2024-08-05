@@ -1,0 +1,32 @@
+    .requestedData{
+        font-size: 2em;
+        padding: 40px;
+        color: #FFFFFF;
+        font-family: "Roboto", sans-serif;
+        text-align: center;
+        background-color: #294851;
+        width: 600px;
+        border-radius: 40px;
+        margin: 30px;
+        transition: 0.5s;
+    }
+    .requestedData:hover{
+        transform: scale(1.05);
+    }
+    .logData{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .dev{
+        max-height: 600px;
+        // overflow-y: auto; 
+    }
+    .pite{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .fnameDiv{
+        margin-top: 20px;
+    }

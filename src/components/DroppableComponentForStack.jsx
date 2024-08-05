@@ -7,18 +7,6 @@ function DroppableComponentForStack({ id, children, disabled }) {
     disabled, 
   });
 
-//   const styleD = {
-//     width: '600px',
-//     height: '120px',
-//     backgroundColor: 'lightgreen',
-//     display: 'flex',
-//     flexDirection: 'column',
-//     flexWrap: 'wrap',
-//     alignContent: 'flex-start',
-//     justifyContent: 'flex-end',
-//     flexFlow: 'column',
-//   };
-  
   return (
     <div ref={setNodeRef} className='lenti' >
         <div>
