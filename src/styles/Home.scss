@@ -40,23 +40,9 @@
 .coat{
     width: 80px;
 }
-// .coat:nth-child(1){
-//     margin-left: 32px;
-//     margin-top: -115px;
-// }
-// .coat:nth-child(2){
-//         margin-left: -110px;
-//         margin-top: -150px;
-// }
-// .coat:nth-child(3){
-    //     margin-left: -90px;
-    //     margin-top: -4px;
-    // }
     
-    
-    .coatImg{
+.coatImg{
     width: 100%;
-    // scale: 0.4;
     object-fit: cover;
 }
 
@@ -75,6 +61,7 @@
 }
 .DroppPlace{
     width: 261px;
+    margin-left: 40px;
     height: 160px;
     margin-bottom: -7px;
     position: relative;
@@ -87,10 +74,11 @@
     
 }
 .lenti{
-    width: 600px;
-    max-height: 60px;
-    height: 60px;
-    background-color: green;
+    width: 300px;
+    margin-left: 10px;
+    max-height: 120px;
+    height: 120px;
+    // background-color: green;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -99,10 +87,9 @@
     flex-flow: column;
 }
 .ShelfImg{
-    width: 100%;
+    width: 350px;
 }
 .counter{
-    width: 100%;
     font-size: 10em;
     color: #ffffff;
     text-align: center;
@@ -110,7 +97,6 @@
     margin-top: -50px;
 }
 .foundationName{
-    width: 100%;
     font-size: 2em;
     color: #125788;
     text-align: center;
@@ -119,7 +105,9 @@
 
 .buttons{
     position: relative;
-    width: 90%;
+    width: 275px;
+    display: flex;
+    flex-direction: row-reverse;
     margin-top: 20px;
 }
     
@@ -196,4 +184,98 @@
 }
 .SubmitBtn:hover{
     border: 2px solid #0A304B;
+}
+.LinkBtn{
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    transition: 0.5s;
+    display: none;
+}
+.LinkBtn:hover{
+    transform: scale(1.1);
+}
+
+
+@media only screen and (max-width: 1500px) {
+    .coatHangerConatiner{
+        width: 900px;
+    }
+    .shelfContainer{
+        flex-direction: column;
+    }
+    .shelf{
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        width: 1000px;
+        gap: 50px;
+    }
+    .shelfContainer{
+        align-items: center;
+        gap: 10px;
+    }
+    .DroppPlace{
+        margin-left:39px;
+    }
+    .counter{
+        font-size: 6em;
+        height: 80px;
+    }
+    .foundationName{
+        font-size: 1.5em;
+        width: 200px;
+    }
+    .buttons{
+        width: 100px;
+        height: 90px;
+        // margin-right: 30px;
+    }
+    .link{
+        display: none;
+    }
+    .LinkBtn{
+        display: inherit;
+        width: 60px;
+        height: 60px;
+        right: -15px;
+    }
+    .infoBtn{
+        height: 60px;
+        width: 60px;
+        left: -15px;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .shelf{
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        width: 800px;
+        gap: 0px;
+    }
+    .LinkBtn{
+        display: inherit;
+        width: 40px;
+        height: 40px;
+        right: 5px;
+    }
+    .infoBtn{
+        height: 40px;
+        width: 40px;
+        left: 5px;
+    }
+    .buttons{
+        height: 50px;
+    }
+    .foundationName{
+        font-size: 1.2em;
+        width: 150px;
+    }
+    .counter{
+        font-size: 6em;
+        height: 70px;
+    }
 }

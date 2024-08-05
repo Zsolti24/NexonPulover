@@ -4,6 +4,7 @@ import HeaderImgM from '../../public/images/headerImage2022_small.png'
 import CoatHangerImg from '../../public/images/coathanger.png'
 import Shelf from '../../public/images/shelf.png'
 import Info from '../../public/images/infoIcon.png'
+import LinkBtn from '../../public/images/linkIcon.png'
 
 import { DndContext } from '@dnd-kit/core';
 import DraggableComponent from '../components/DraggableComponent';
@@ -174,26 +175,29 @@ export default function HomePage() {
         <div className="shelfContainer">
             {foundationName.map((name, index) => (
                     <div className="shelf" key={index}>
-                    <div className='DroppPlace'>
-                        <DroppableComponentForStack id={`droppable${index + 1}`}>
-                        <div className="dropPlace">
-                            {droppedItems[`droppable${index + 1}`].map((id) => (
-                            <DraggableComponent 
-                                key={id} 
-                                id={id} 
-                                src={`../public/images/FImage${id.split('-')[1]}.png`} 
-                                alt={`Image ${id.split('-')[1]}`} 
-                            />
-                            ))}
-                        </div>
-                        </DroppableComponentForStack>
+                    <div>
+                      <div className='DroppPlace'>
+                          <DroppableComponentForStack id={`droppable${index + 1}`}>
+                          <div className="dropPlace">
+                              {droppedItems[`droppable${index + 1}`].map((id) => (
+                              <DraggableComponent 
+                                  key={id} 
+                                  id={id} 
+                                  src={`../public/images/FImage${id.split('-')[1]}.png`} 
+                                  alt={`Image ${id.split('-')[1]}`} 
+                              />
+                              ))}
+                          </div>
+                          </DroppableComponentForStack>
+                      </div>
+                      <img src={Shelf} alt="" className='ShelfImg' />
                     </div>
-                    <img src={Shelf} alt="" className='ShelfImg' />
                     <div className="counter">{counters[index]}</div>
                     <div className="foundationName">{name}</div>
                     <div className="buttons">
                         <img src={Info} alt="" className='infoBtn' />
                         <div className="link">{links[index]}</div>
+                        <img src={LinkBtn} alt=""  className='LinkBtn'/>
                     </div>
                     </div>
                 ))}
