@@ -69,6 +69,7 @@ export default function HomePage() {
       ]);
 
       const handleDragEnd = (event) => {
+        console.log("nem");
         const { active, over } = event;
     
         if (over) {
@@ -269,7 +270,7 @@ export default function HomePage() {
 
 
       const handleClick = (link) => {
-        window.location.href = `https://${link}`; // Navigálás a megadott linkre
+        window.location.href = `https://${link}`;
       };
 
 
