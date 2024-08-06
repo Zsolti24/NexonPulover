@@ -28,23 +28,61 @@
 }
 .coatFlexContainer{
     position: absolute;
+    z-index: 200;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: row;
+    width: calc(100% - 200px);
     height: 200px;
     left: 100px;
     top: 35%;
-    border: 1px solid green;
+    gap: 20px;
+    // border: 1px solid green;
 }
+
 .coat{
     width: 80px;
 }
+.coat:nth-child(1){
+    margin-left: -15px;
+}.coat:nth-child(2){
+    margin-left: -10px;
+}.coat:nth-child(3){
+    margin-left: 10px;
+}.coat:nth-child(4){
+    margin-left: -5px;
+}.coat:nth-child(5){
+    margin-left: -5px;
+}.coat:nth-child(6){
+    margin-left: 12px;
+}.coat:nth-child(7){
+    margin-left: -5px;
+}.coat:nth-child(7){
+    margin-left: -5px;
+}.coat:nth-child(8){
+    margin-left: -2px;
+}.coat:nth-child(9){
+    margin-left: 4px;
+}.coat:nth-child(10){
+    margin-left: -10px;
+}.coat:nth-child(11){
+    margin-left: -2px;
+}.coat:nth-child(12){
+    margin-left: 12px;
+}
+
+.DroppableContentHanger{
+    width: 99px;
+    height: 200px;
+    margin-left: 5px;
+}
+
     
 .coatImg{
     width: 100%;
-    object-fit: cover;
+    z-index: 100;
 }
+
 
 .shelfContainer{
     width: 100%;
@@ -68,24 +106,22 @@
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
+
 }
 .dropPlace{
     align-items: flex-end;
     
 }
-.lenti{
+.greenDropable {
     width: 300px;
     margin-left: 10px;
-    max-height: 120px;
-    height: 120px;
-    // background-color: green;
+    height: 90px;
+    background-color: green;
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: flex-end;
-    justify-content: flex-end;
-    flex-flow: column;
+    flex-wrap:wrap-reverse;
+    flex-flow: column-reverse;
 }
+
 .ShelfImg{
     width: 350px;
 }
@@ -197,6 +233,37 @@
 }
 .LinkBtn:hover{
     transform: scale(1.1);
+}
+
+
+.popSent{
+    position:fixed;
+    text-align: center;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    z-index: 1000;
+    background-color: #3f3f43;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    display: none;
+    font-size: 3em;
+    color: #FFFFFF;
+}
+.popSentActive{
+    display: flex;
+}
+.xbutton{
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    cursor: pointer;
 }
 
 

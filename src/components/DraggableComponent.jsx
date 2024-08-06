@@ -7,7 +7,6 @@ function DraggableComponent({ id, src, alt }) {
     id,
   });
 
-  // Csak a translate értéket használjuk a transform-ban
   const style = {
     touchAction: 'none',
     width: '130px', 
@@ -15,8 +14,8 @@ function DraggableComponent({ id, src, alt }) {
     marginBottom:'-2px',
     marginTop:'-4px',
     opacity: isDragging ? 1 : 1, 
-    zIndex: isDragging ? 1000 : 'auto',
-    cursor: isDragging ? 'grab' : 'pointer', // Cursor változtatása
+    zIndex: isDragging ? 1000 : 100,
+    cursor: isDragging ? 'grab' : 'pointer',
 
     transform: isDragging ? `translate(${transform.x}px, ${transform.y}px)` : 'none', // Csak a pozíció
   };

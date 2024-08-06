@@ -8,10 +8,8 @@ function DroppableComponentForStack({ id, children, disabled }) {
   });
 
   return (
-    <div ref={setNodeRef} className='lenti' >
-        <div>
+    <div ref={setNodeRef} className='greenDropable' >
       {children}
-      </div>
     </div>
   );
 }

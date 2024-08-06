@@ -7,14 +7,8 @@ function DroppableComponent({ id, children, disabled }) {
     disabled, // Apply the disabled prop here
   });
 
-  const styleD = {
-    width:'200px',
-    height:'400px',
-    // backgroundColor: isOver ? 'lightgreen' : 'lightgrey',
-  };
-
   return (
-    <div ref={setNodeRef} style={styleD} >
+    <div ref={setNodeRef} className='DroppableContentHanger' >
       {children}
     </div>
   );

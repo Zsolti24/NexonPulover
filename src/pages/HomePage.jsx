@@ -6,18 +6,18 @@ import Shelf from '../../public/images/shelf.png'
 import Info from '../../public/images/infoIcon.png'
 import LinkBtn from '../../public/images/linkIcon.png'
 
+import axios from 'axios'
+
+import {foundationName, links, range, spreadsheetId, fetchLink, SheetLink} from '../constans/constans'
+
 import { DndContext } from '@dnd-kit/core';
 import DraggableComponent from '../components/DraggableComponent';
 import DroppableComponent from '../components/DroppableComponent';
 import DroppableComponentForStack from '../components/DroppableComponentForStack';
-import { findRenderedComponentWithType } from 'react-dom/test-utils'
-
-// LINK FOR THE SCRIPT https://script.google.com/macros/s/AKfycbwo_wPjNaIIvXR60FgBIudGWYvUmYhEgyfsocdxzAevbKlajZvzdw8_bHZ_i2hA8OuZ/exec
-
 
 export default function HomePage() {
 
-    const [headerImgSrc,setHeaderImgSrc] = useState(HeaderImgL)
+    const [headerImgSrc,setHeaderImgSrc] = useState(HeaderImgL);
 
     useEffect(() => {
         const handleResize = () => {
@@ -34,9 +34,6 @@ export default function HomePage() {
     }, []);
 
     const [counters, setCounters] = useState([0,0,0,0])
-    const [foundationName, setFoundationName] = useState(["SZENT ISTVÁN KIRÁLY ZENEI ALAPÍTVÁNY","AUTIZMUS ALAPÍTVÁNY","ÉLELMISZERBANK EGYESÜLET","LÁMPÁS '92 ALAPÍTVÁNY"])
-    const [links, setLinks] = useState(["www.szentistvanzene.hu","www.autizmus.hu","www.elemiszerbank.hu","www.lampas92.hu"]);
-
 
     const [droppedItems, setDroppedItems] = useState({
         droppable1: [],
@@ -145,6 +142,132 @@ export default function HomePage() {
         setSubmitBtn(allEmpty ? 'SubmitBtn SubmitBtnActive' : 'SubmitBtn');
       }, [droppedItems]); 
 
+
+      const [sentText, setSentText] = useState("Sikeresen elküldte");
+      const [data, setData] = useState(null);
+      const [expired, setExpired] = useState(false);
+      const [sentAppear, setSentAppear] = useState(false);
+
+      const sent = () => {
+          const temp = checkExpiry();
+          console.log(temp.value);
+          if(sentAppear==false && data==true && temp.value==false){
+              setSentAppear(true);
+              setSentText("Várnod kell a következő küldésig.");
+          }
+          else if(sentAppear==false){
+              handleUpdateCell();
+              setSentText("Sikeresen elküldte");
+              resetDroppedItems();
+              setSentAppear(true);
+              handleSave(true);
+          }
+      }
+      const closePop = () => {
+           setSentAppear(false);
+      }
+
+      useEffect(() => {
+        
+        const storedData = getFromLocalStorage('myKey');
+        if (storedData) {
+          setData(storedData);
+        }    
+      }, []);
+
+      
+      const handleSave = (val) => {
+        saveToLocalStorage('myKey', val, 10);
+        setData(val);
+      };
+
+
+
+
+      const [readdata, setreaddata] = useState([]);
+      const [error, setError] = useState(null);
+      
+      useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const response = await fetch(fetchLink);
+            const text = await response.text();
+            const jsonData = JSON.parse(text.substr(47).slice(0, -2));
+            const rows = jsonData.table.rows.map(row => row.c.map(cell => cell ? cell.v : ''));
+            setreaddata(rows);
+          } catch (err) {
+            setError('Error fetching data');
+            console.error(err);
+          }
+        };
+        
+        fetchData();
+      }, [spreadsheetId, range]);
+
+      const [nextIndeex, setNextIndeex] = useState(10);
+
+      const [ipAddress, setIpAddress] = useState('');
+
+      const tellTheIndex = () => {
+        var len = readdata.length + 1;
+        setNextIndeex(readdata.length);
+      }
+      
+      const fetchIpAddress = async () => {
+        try {
+          const response = await axios.get('https://api.ipify.org?format=json');
+          setIpAddress(response.data.ip);
+        } catch (error) {
+          console.error('Error fetching IP address:', error);
+        }
+      };
+      
+      fetchIpAddress();
+      
+      const handleUpdateCell = async () => {
+        tellTheIndex();
+        const now = new Date();
+        now.setHours(now.getHours() + 2);
+        fetchIpAddress();
+        tellTheIndex();
+        const response = await axios.get(`${SheetLink}?action=setValue&id=${readdata.length + 1}&ip=${ipAddress}&time=${now.toISOString()}&fou1=${counters[0]}&fou2=${counters[1]}&fou3=${counters[2]}&fou4=${counters[3]}&row=${readdata.length + 2}`);
+      };
+      
+
+
+
+    function checkExpiry(){
+        const now = new Date().getTime();
+        const itemStr = localStorage.getItem('myKey');
+        if (itemStr) {
+          const item = JSON.parse(itemStr);
+          if (now > item.expiry) {
+            setExpired(true);
+            setData(null);
+            localStorage.removeItem('myKey'); 
+            return {value: true};
+          } else {
+            setData(item.value);
+            setExpired(false);
+            return {value: false};
+          }
+        } else {
+          setData(null);
+          return {value: false};
+        }
+      }
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <DndContext onDragEnd={handleDragEnd}>
 
@@ -152,7 +275,7 @@ export default function HomePage() {
         <img src={headerImgSrc} alt="headerImage" className='headerImage'/>
         <div className="coatHangerConatiner">
             <img src={CoatHangerImg} alt="" className='coatHangerImg'/>
-            <div className={submitBtn}>ELKÜLDÖM</div>
+            <div className={submitBtn} onClick={sent}>ELKÜLDÖM</div>
 
             <div className="coatFlexContainer">
             {droppableIds.map((id) => (
@@ -208,6 +331,37 @@ export default function HomePage() {
             VISSZAÁLLÍTÁS
         </div>
     </div>
+    <div className={sentAppear ? "popSent popSentActive" : "popSent"}>
+            {sentText}
+            <div className="xbutton" onClick={closePop}>
+                x
+            </div>
+        </div>
+
     </DndContext>
   )
 }
+
+
+const saveToLocalStorage = (key, value, ttl) => {
+  const now = new Date().getTime();
+  const item = {
+    value: value,
+    expiry: now + ttl * 60000,
+  };
+  localStorage.setItem(key, JSON.stringify(item));
+};
+
+const getFromLocalStorage = (key) => {
+  const itemStr = localStorage.getItem(key);
+  if (!itemStr) {
+    return null;
+  }
+  const item = JSON.parse(itemStr);
+  const now = new Date().getTime();
+  if (now > item.expiry) {
+    localStorage.removeItem(key);
+    return null;
+  }
+  return item.value;
+};

@@ -5,10 +5,11 @@ import '../styles/DevPage.scss'
 
 import { DataGrid } from '@mui/x-data-grid';
 
+
+import {foundationName,links} from '../constans/constans'
+
 export default function DevPage() {
   
-  const [foundations, setFoundationName] = useState(["SZENT ISTVÁN KIRÁLY ZENEI ALAPÍTVÁNY","AUTIZMUS ALAPÍTVÁNY","ÉLELMISZERBANK EGYESÜLET","LÁMPÁS '92 ALAPÍTVÁNY"])
-   
     const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
       const RADIAN = Math.PI / 180;
       const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
@@ -53,10 +54,10 @@ export default function DevPage() {
       { field: 'id', headerName: 'ID', type: 'number', width: 70 },
       { field: 'ip', headerName: 'Ip', width: 200 },
       { field: 'time', headerName: 'Time', width: 300 },
-      { field: 'foundation1',headerName: foundations[0], type: 'number', width: 200,},
-      { field: 'foundation2',headerName: foundations[1], type: 'number', width: 250,},
-      { field: 'foundation3',headerName: foundations[2], type: 'number', width: 350,},
-      { field: 'foundation4',headerName: foundations[3], type: 'number', width: 350,},
+      { field: 'foundation1',headerName: foundationName[0], type: 'number', width: 200,},
+      { field: 'foundation2',headerName: foundationName[1], type: 'number', width: 250,},
+      { field: 'foundation3',headerName: foundationName[2], type: 'number', width: 350,},
+      { field: 'foundation4',headerName: foundationName[3], type: 'number', width: 350,},
     ];
     
     const rows =  data.map(row => ({
@@ -80,10 +81,10 @@ export default function DevPage() {
   
   
     const pieData = [
-      { id: 0, value: toltalSumFound1, label: foundations[0] },
-      { id: 1, value: toltalSumFound2, label: foundations[1] },
-      { id: 2, value: toltalSumFound3, label: foundations[2] },
-      { id: 3, value: toltalSumFound4, label: foundations[3] },
+      { id: 0, value: toltalSumFound1, label: foundationName[0] },
+      { id: 1, value: toltalSumFound2, label: foundationName[1] },
+      { id: 2, value: toltalSumFound3, label: foundationName[2] },
+      { id: 3, value: toltalSumFound4, label: foundationName[3] },
     ];
   
   
@@ -148,25 +149,25 @@ export default function DevPage() {
           <div className='requestedData'>
             Total number of donation to
             <div className='fnameDiv'>
-              {foundations[0]}: {toltalSumFound1}
+              {foundationName[0]}: {toltalSumFound1}
             </div>
           </div >
           <div className='requestedData'>
           Total number of donation to
             <div className='fnameDiv'> 
-              {foundations[1]}: {toltalSumFound1}
+              {foundationName[1]}: {toltalSumFound2}
             </div>
           </div>
           <div className='requestedData'>
           Total number of donation to
             <div className='fnameDiv'>
-              {foundations[2]}: {toltalSumFound1}
+              {foundationName[2]}: {toltalSumFound3}
             </div> 
           </div>
           <div className='requestedData'>
           Total number of donation to
             <div className='fnameDiv'>
-              {foundations[3]}: {toltalSumFound1}
+              {foundationName[3]}: {toltalSumFound4}
             </div> 
           </div>
         </div>
