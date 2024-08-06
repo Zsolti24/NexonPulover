@@ -167,6 +167,14 @@ export default function HomePage() {
            setSentAppear(false);
       }
 
+
+      const infoClicked = (text) => {
+        if(sentAppear==false){
+            setSentAppear(true);
+            setSentText(text);
+        }
+    }
+
       useEffect(() => {
         
         const storedData = getFromLocalStorage('myKey');
@@ -260,8 +268,9 @@ export default function HomePage() {
 
 
 
-
-
+      const handleClick = (link) => {
+        window.location.href = `https://${link}`; // Navigálás a megadott linkre
+      };
 
 
 
@@ -318,9 +327,9 @@ export default function HomePage() {
                     <div className="counter">{counters[index]}</div>
                     <div className="foundationName">{name}</div>
                     <div className="buttons">
-                        <img src={Info} alt="" className='infoBtn' />
-                        <div className="link">{links[index]}</div>
-                        <img src={LinkBtn} alt=""  className='LinkBtn'/>
+                        <img src={Info} alt="" className='infoBtn' onClick={() => infoClicked('There could be a description of the foundation imported from a const file')}/>
+                        <div className="link" onClick={() => handleClick(links[index])}>{links[index]}</div>
+                        <img src={LinkBtn} alt=""  className='LinkBtn' onClick={() => handleClick(links[index])}/>
                     </div>
                     </div>
                 ))}
