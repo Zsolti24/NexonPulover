@@ -113,6 +113,7 @@
     flex-direction: column-reverse;
     height: 90px;
     flex-wrap: wrap;
+
 }
 .greenDropable {
     width: 300px;
@@ -128,6 +129,7 @@
 }
 .counter{
     font-size: 10em;
+    padding: 2px;
     color: #ffffff;
     text-align: center;
     font-weight: bold;
@@ -268,6 +270,26 @@
 }
 
 
+
+
+
+.draggable {
+    touch-action: none;
+    width: 130px; 
+    display: flex;
+    margin-bottom: -2px;
+    margin-top: -4px;
+    opacity: 1; 
+    cursor: pointer; 
+    transition: opacity 0.2s;
+}
+
+.draggable.dragging {
+    z-index: 1000;
+    cursor: grab; 
+}
+
+
 @media only screen and (max-width: 1500px) {
     .coatHangerConatiner{
         width: 900px;
@@ -283,6 +305,11 @@
         left: 0px;
         top: 35%;
         gap: 20px;
+    }
+    .dropPlace{
+        height: 65px;
+        // width: 120px;
+
     }
 
     .coat{
@@ -427,6 +454,52 @@
         top: 83px;
         font-size: 1.3em;
     }
+    .DroppPlace{
+        width: 120px;
+        margin-left: 30px;
+        height: 120px;
+    }
+    .dropPlace{
+        height: 50px;
+        width: 120px;
+
+    }
+
+    .DroppPlace{
+        .coatImg{
+            width: 65px;
+            z-index: 100;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 4px;
+        }
+        .draggable {
+            touch-action: none;
+            width: 65px; 
+            display: flex;
+            margin-bottom: -2px;
+            margin-top: -4px;
+            opacity: 1; 
+            cursor: pointer; 
+            transition: opacity 0.2s;
+        }
+        
+
+    }
+    .greenDropable {
+        width: 150px;
+        margin-left: -0px;
+        height: 90px;
+        margin-bottom: 5px;
+        display: flex;
+        flex-wrap:wrap-reverse;
+        flex-flow: column-reverse;
+    }
+    
+    .ShelfImg{
+        width: 180px;
+        margin-bottom: 20px;
+    }
 }
 
 
@@ -458,35 +531,6 @@
         height: 70px;
         margin-top: 10px;
     }
-    .DroppPlace{
-        width: 150px;
-        margin-left: 40px;
-        height: 120px;
-    
-    }
-
-    .DroppPlace{
-        .coatImg{
-            width: 50%;
-            z-index: 100;
-            margin-left: -19px;
-        }
-    }
-    .greenDropable {
-        width: 150px;
-        margin-left: -0px;
-        height: 90px;
-        margin-bottom: 5px;
-        display: flex;
-        flex-wrap:wrap-reverse;
-        flex-flow: column-reverse;
-    }
-    
-    .ShelfImg{
-        width: 180px;
-        margin-bottom: 20px;
-    }
-
     
 .popSent{
     width: 150px;
